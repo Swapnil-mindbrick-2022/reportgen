@@ -79,7 +79,7 @@ def index():
             # Add new column 'DURATION'
             result['DURATION'] = result['ENDING TIME'] - result['STARING TIME']
             result['DURATION'] = result['DURATION'].apply(lambda x: divmod(x.seconds, 3600))
-            result['DURATION'] = result['DURATION'].apply(lambda x: f"{x[0]:0>2}:{x[1]//60:0>2}:{x[1]%60:0>2}")
+            #result['DURATION'] = result['DURATION'].apply(lambda x: f"{x[0]:0>2}:{x[1]//60:0>2}:{x[1]%60:0>2}")
             #result['DURATION'] = result['DURATION'].apply(lambda x: f"{x//3600:0>2}:{x%3600//60:0>2}:{x%60:0>2}")
             #result['DURATION'] = result['DURATION'].dt.total_seconds().div(60).round(2)
             #result['DURATION'] = result['DURATION'].div(60).round(2)
