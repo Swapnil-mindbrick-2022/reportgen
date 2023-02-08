@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>MIND BRINK </title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container my-5">
+  <button class="btn btn-primary" id="btn">Export to Excel</button>
+  <table id="Record" class="table table-striped table-dark my-3">
+    <thead>
+      <tr>
+        <th scope="col">EmployeeName</th>
+        <th scope="col">No of Samples</th>
+        <th scope="col">Duration</th>
+        <th scope="col">DuplicateLocation</th>
+        <th scope="col">Female(%)</th>
+        <th scope="col">Male(%)</th>
+        <th scope="col">StartTime</th>
+        <th scope="col">EndTime</th>
+        <th scope="col">Invalid Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for i in range(length)%}
+      <tr>
+        <td scope="row">{{res[i].EMPLOYEE_NAME}}</td>
+        <td scope="row">{{res[i].NO_OF_SAMPLES}}</td>
+        <td scope="row">{{res[i].DURATION}}</td>
+        <td scope="row">{{res[i].DUPLICATE_LOCATION}}</td>
+        <td scope="row">{{res[i].FEMALE}}</td>
+        <td scope="row">{{res[i].MALE}}</td>
+        <td scope="row">{{res[i].STARING_TIME}}</td>
+        <td scope="row">{{res[i].ENDING_TIME}}</td>
+        <td scope="row">{{res[i].INVALID_NUMBER }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<!-- partial -->
+  <script src='https://cdn.jsdelivr.net/npm/table2excel@1.0.4/dist/table2excel.min.js'></script>
+  <script>
+    document.getElementById("btn").addEventListener("click", () => {
+  let table2excel = new Table2Excel();
+  table2excel.export(document.querySelector("#Record"));
+});
+  </script>
+
+</body>
+</html>
