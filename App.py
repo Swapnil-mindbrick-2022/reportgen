@@ -5,7 +5,7 @@ import pandas as pd
 import logging as logger
 from werkzeug.utils import secure_filename
 from openpyxl.styles import Border, Side, Alignment,PatternFill
-from openpyxl.utils import get_column_letter, range_boundaries
+from openpyxl.utils import get_column_letter
 from datetime import datetime
 import re
 import os
@@ -330,26 +330,7 @@ def index():
                 #Add filter to each column
                 worksheet.auto_filter.ref = "A2:%s2" % (get_column_letter(worksheet.max_column))
             # data = Reference(worksheet, min_col=2, min_row=1, max_row=worksheet.max_row, max_col=2)
-                # Define the data for the pie chart
-                #data = Reference(worksheet, min_col=2, min_row=3, max_row=worksheet.max_row, max_col=2)
-                
-                # Create the pie chart
-                #pie = PieChart()
-            # pie.add_data(data)
-            # pie.title = "NO OF SAMPLES"
-                # Show percentage in data labels
-                #pie.data_labels = True
-                #pie.data_label_type = 'percentage'
 
-                
-                # Set the position and size of the chart
-                #pie.width = 12
-                #pie.height = 8
-                #pie.left = worksheet.column_dimensions[get_column_letter(worksheet.max_column + 1)].width
-            # pie.top = worksheet.row_dimensions[1].height
-                
-                # Add the chart to the worksheet
-                #worksheet.add_chart(pie)
 
                 # Save the changes to the Excel file
                 writer.save()
@@ -360,6 +341,7 @@ def index():
             
             
             # Return the file for download
+            
             return send_file("result.xlsx",
                             mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                             as_attachment=True)
